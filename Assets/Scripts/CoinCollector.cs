@@ -1,13 +1,20 @@
 ﻿using UnityEngine;
 
+[DisallowMultipleComponent]
 public class CoinCollector : MonoBehaviour
 {
     public int CoinCount { get; private set; } 
     public static CoinCollector Instance { get; private set; }
     public event System.Action<CoinCollector> OnUpdate;
     
-    void Awake()
+    private void Awake()
     {
+        if (Instance != null)
+        {
+            Debug.LogWarning("Trying to instantiate a second instance of singleton class CoinCollector");
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
     }
 
@@ -19,9 +26,6 @@ public class CoinCollector : MonoBehaviour
     public void AddCoin(int count)
     {
         CoinCount += count;
-        if (OnUpdate != null)
-        {
-            OnUpdate(this);
-        }
+        OnUpdate?.Invoke(this);
     }
 }

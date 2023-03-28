@@ -17,6 +17,9 @@ public class CoinCollectorUI : MonoBehaviour
 
     private void OnDestroy()
     {
-        CoinCollector.Instance.OnUpdate -= UpdateUI;
+        if (CoinCollector.Instance != null)
+        {
+            CoinCollector.Instance.OnUpdate -= UpdateUI;
+        }
     }
 }

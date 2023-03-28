@@ -39,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
         {
             _direction.y = -1f;
             _ableToDoubleJump = true;
+            if (Input.GetButtonDown("Fire1"))
+            {
+                animator.SetTrigger("fireballAttack");
+            }
             if (Input.GetButtonDown("Jump"))
             {
                 _direction.y = jumpForce;
@@ -53,6 +57,11 @@ public class PlayerMovement : MonoBehaviour
                 _direction.y = jumpForce;
                 _ableToDoubleJump = false;
             }
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("FireballAttack"))
+        {
+            return;
         }
 
         if (horizontalInput != 0)
