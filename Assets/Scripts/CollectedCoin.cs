@@ -4,7 +4,7 @@ public class CollectedCoin : MonoBehaviour
 {
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             CoinCollector.Instance.AddCoin(1);
             Destroy(gameObject);
