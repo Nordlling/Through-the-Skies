@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [SerializeField] private Animator animatorController;
     private ActionStateEnum _actionState = ActionStateEnum.Idle;
     private DirectionStateEnum _directionState = DirectionStateEnum.Right;
-    [SerializeField] private Animator animatorController;
     private Transform _transform;
     private bool _isChase;
     private bool _isAttack;
@@ -77,5 +77,10 @@ public class EnemyMovement : MonoBehaviour
     private void Attack()
     {
         Debug.Log("Attack");
+    }
+
+    public Animator GetAnimatorController()
+    {
+        return animatorController;
     }
 }
