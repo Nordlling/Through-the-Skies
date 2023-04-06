@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
@@ -14,6 +15,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float distanceToChase = 10f;
     [SerializeField] private float distanceToAttack = 2f;
     [SerializeField] private float speed = 2f;
+    
+    [SerializeField] private int damage = 40;
+    
+    public static event Action<GameObject, int> OnTakeDamage;
 
     private void Update()
     {
