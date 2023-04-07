@@ -4,24 +4,47 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private Animator animatorController;
+    [SerializeField] private Transform target;
+    [SerializeField] private float distanceToChase = 10f;
+    [SerializeField] private float distanceToAttack = 2f;
+    [SerializeField] private float speed = 2f;
+    
+    
     private ActionStateEnum _actionState = ActionStateEnum.Idle;
     private DirectionStateEnum _directionState = DirectionStateEnum.Right;
     private Transform _transform;
     private bool _isChase;
     private bool _isAttack;
     private float _distance;
+    
+    private void OnEnable()
+    {
+        GameOverNotifier.OnGameOver += GameOver;
+    }
+    private void OnDisable()
+    {
+        GameOverNotifier.OnGameOver -= GameOver;
+    }
 
-    [SerializeField] private Transform target;
-    [SerializeField] private float distanceToChase = 10f;
-    [SerializeField] private float distanceToAttack = 2f;
-    [SerializeField] private float speed = 2f;
-    
-    [SerializeField] private int damage = 40;
-    
-    public static event Action<GameObject, int> OnTakeDamage;
 
     private void Update()
     {
+        switch (_actionState)
+        {
+            case ActionStateEnum.Idle:
+                Idle();
+                break;
+            case ActionStateEnum.Walk:
+                Chase();
+                break;
+            case ActionStateEnum.Attack:
+                Attack();
+                break;
+            default:
+                Idle();
+                break;
+        }
+
         _distance = Vector3.Distance(transform.position, target.position);
         _isAttack = false;
         if (_distance < distanceToChase)
@@ -40,20 +63,6 @@ public class EnemyMovement : MonoBehaviour
             _isAttack = false;
         }
 
-        switch (_actionState)
-        {
-            case ActionStateEnum.Idle:
-                Idle();
-                break;
-            case ActionStateEnum.Walk:
-                Chase();
-                break;
-            case ActionStateEnum.Attack:
-                Attack();
-                break;
-
-        }
-
         animatorController.SetBool("isChase", _isChase);
         animatorController.SetBool("isAttack", _isAttack);
     }
@@ -61,7 +70,8 @@ public class EnemyMovement : MonoBehaviour
     
     private void Idle()
     {
-        animatorController.SetBool("isChase", _isChase);
+        animatorController.SetBool("isChase", false);
+        animatorController.SetBool("isAttack", false);
     }
 
     private void Chase()
@@ -84,8 +94,10 @@ public class EnemyMovement : MonoBehaviour
         Debug.Log("Attack");
     }
 
-    public Animator GetAnimatorController()
+    private void GameOver()
     {
-        return animatorController;
+        enabled = false;
+        _actionState = ActionStateEnum.Idle;
+        Idle();
     }
 }

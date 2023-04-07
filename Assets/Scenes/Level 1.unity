@@ -398,7 +398,7 @@ Transform:
   - {fileID: 775554787}
   - {fileID: 1309551659}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &247117359
 PrefabInstance:
@@ -812,7 +812,7 @@ RectTransform:
   m_Children:
   - {fileID: 1509404525}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1099,7 +1099,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &458658028 stripped
 Transform:
@@ -1611,7 +1611,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 6cf4df05a6ddc374cbef47ea40490d9c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6cf4df05a6ddc374cbef47ea40490d9c,
         type: 3}
@@ -2621,7 +2621,7 @@ Transform:
   m_Children:
   - {fileID: 585398447}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &743582601
 MonoBehaviour:
@@ -2640,7 +2640,6 @@ MonoBehaviour:
   distanceToChase: 10
   distanceToAttack: 2.2
   speed: 12
-  damage: 40
 --- !u!54 &743582602
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2666,7 +2665,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 743582596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6126acd802f4083b2c3c57d86a00e7d, type: 3}
+  m_Script: {fileID: 11500000, guid: 20ac317efed34ec3b8540b98644ff494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -2901,7 +2900,7 @@ Transform:
   - {fileID: 185590907}
   - {fileID: 1258350992}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &875768441 stripped
 Transform:
@@ -4043,7 +4042,7 @@ Transform:
   m_Children:
   - {fileID: 1026838065}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1746854674
 PrefabInstance:
@@ -5311,7 +5310,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1915041501 stripped
 Transform:
