@@ -3,7 +3,17 @@ guid: 26365bddc09d9d547809b333d4dde0ba
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BattalionLeader_MAT
+    second: {fileID: 2100000, guid: db2054e107ee19545ad45e62001a9e64, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: phong1
+    second: {fileID: 2100000, guid: 407227d795e2ae3459eba6ba3abc0944, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
