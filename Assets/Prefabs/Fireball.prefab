@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720d54d890724bd5b0c42e97eca3389e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 100002, guid: 4ace374ac48734e0a8159109bc4c6bbb, type: 3}
+  explosionPrefab: {fileID: 100004, guid: a89abc0d2591545288f4c041059ae633, type: 3}
+  damage: 40
 --- !u!1001 &4325387431933193724
 PrefabInstance:
   m_ObjectHideFlags: 0
