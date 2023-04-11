@@ -3,14 +3,25 @@
 public class LeverResultDisplay : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
-    private void Start()
+    [SerializeField] private float delay = 2f;
+    
+    private void OnEnable()
     {
-        Invoke(nameof(test), 6f);
+        GameOverNotifier.OnFailDisplay += OnFailDisplay;
+    }
+    private void OnDisable()
+    {
+        GameOverNotifier.OnFailDisplay -= OnFailDisplay;
     }
 
-    private void test()
+    private void OnFailDisplay()
+    {
+        Invoke(nameof(FailDisplay), delay);
+    }
+
+    private void FailDisplay()
     {
         animator.SetTrigger("fail");
     }
+    
 }
