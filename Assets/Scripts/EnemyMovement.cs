@@ -17,6 +17,12 @@ public class EnemyMovement : MonoBehaviour
     private bool _isAttack;
     private float _distance;
     
+    private readonly int _animationAttackHash = Animator.StringToHash("Attack");
+    private readonly int _isAttackHash = Animator.StringToHash("isAttack");
+    private readonly int _isChaseHash = Animator.StringToHash("isChase");
+
+        
+    
     private void OnEnable()
     {
         GameOverNotifier.OnGameOver += GameOver;
@@ -27,8 +33,13 @@ public class EnemyMovement : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (animatorController.GetCurrentAnimatorStateInfo(0).shortNameHash == _animationAttackHash &&
+            animatorController.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+        {
+            return;
+        }
         switch (_actionState)
         {
             case ActionStateEnum.Idle:
@@ -63,15 +74,15 @@ public class EnemyMovement : MonoBehaviour
             _isAttack = false;
         }
 
-        animatorController.SetBool("isChase", _isChase);
-        animatorController.SetBool("isAttack", _isAttack);
+        animatorController.SetBool(_isChaseHash, _isChase);
+        animatorController.SetBool(_isAttackHash, _isAttack);
     }
     
     
     private void Idle()
     {
-        animatorController.SetBool("isChase", false);
-        animatorController.SetBool("isAttack", false);
+        animatorController.SetBool(_isChaseHash, false);
+        animatorController.SetBool(_isAttackHash, false);
     }
 
     private void Chase()
@@ -91,7 +102,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Attack()
     {
-        Debug.Log("Attack");
+        // Debug.Log("Attack");
     }
 
     private void GameOver()

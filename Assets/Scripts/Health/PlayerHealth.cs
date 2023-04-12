@@ -15,6 +15,6 @@ public class PlayerHealth : AbstractHealth
     protected override void Die()
     {
         base.Die();
-        GameOverNotifier.NotifyEnemiesGameOver();
+        GameOverNotifier.GameOver();
     }
 }

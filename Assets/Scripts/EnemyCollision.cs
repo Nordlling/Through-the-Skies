@@ -10,10 +10,10 @@ public class EnemyCollision : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!_alreadyDamaged && other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !_alreadyDamaged)
         {
-            OnTakeDamage?.Invoke(other.gameObject, damage);
             _alreadyDamaged = true;
+            OnTakeDamage?.Invoke(other.gameObject, damage);
         }
     }
     

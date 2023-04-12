@@ -16,11 +16,12 @@ public class PlayerMovement : MonoBehaviour
     
 
     private bool _ableToDoubleJump = true;
-
-    private void Start()
-    {
-        
-    }
+    
+    private readonly int _animationFireballAttackHash = Animator.StringToHash("FireballAttack");
+    private readonly int _isGroundedHash = Animator.StringToHash("isGrounded");
+    private readonly int _fireballAttackHash = Animator.StringToHash("fireballAttack");
+    private readonly int _doubleJumpHash = Animator.StringToHash("doubleJump");
+    private readonly int _speedHash = Animator.StringToHash("speed");
 
     private void Update()
     {
@@ -29,11 +30,11 @@ public class PlayerMovement : MonoBehaviour
         _direction.x = horizontalInput * speed;
         _direction.y += gravity * Time.deltaTime;
         
-        animator.SetFloat("speed", Mathf.Abs(horizontalInput));
+        animator.SetFloat(_speedHash, Mathf.Abs(horizontalInput));
         
         bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
         
-        animator.SetBool("isGrounded", isGrounded);
+        animator.SetBool(_isGroundedHash, isGrounded);
 
         if (isGrounded)
         {
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             _ableToDoubleJump = true;
             if (Input.GetButtonDown("Fire1"))
             {
-                animator.SetTrigger("fireballAttack");
+                animator.SetTrigger(_fireballAttackHash);
             }
             if (Input.GetButtonDown("Jump"))
             {
@@ -53,13 +54,13 @@ public class PlayerMovement : MonoBehaviour
             _direction.y += gravity * Time.deltaTime;
             if (_ableToDoubleJump && Input.GetButtonDown("Jump"))
             {
-                animator.SetTrigger("doubleJump");
+                animator.SetTrigger(_doubleJumpHash);
                 _direction.y = jumpForce;
                 _ableToDoubleJump = false;
             }
         }
 
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("FireballAttack"))
+        if (animator.GetCurrentAnimatorStateInfo(0).shortNameHash == _animationFireballAttackHash)
         {
             return;
         }

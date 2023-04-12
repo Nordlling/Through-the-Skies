@@ -13,8 +13,8 @@ public class FireballCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") )
         {
             OnTakeDamage?.Invoke(other.gameObject, damage);
-            Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
-            Destroy(gameObject);
         }
+        Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
+        Destroy(gameObject);
     }
 }
