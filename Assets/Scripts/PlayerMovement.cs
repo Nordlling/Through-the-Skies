@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            _direction.y = -1f;
+            _direction.y = 0f;
             _ableToDoubleJump = true;
             if (Input.GetButtonDown("Fire1"))
             {
@@ -71,5 +71,23 @@ public class PlayerMovement : MonoBehaviour
         }
 
         controller.Move(_direction * Time.deltaTime);
+        
+        rayDisplay();
+        
+    }
+
+    private void rayDisplay()
+    {
+        Ray ray = new Ray(transform.position, _direction);
+        
+        RaycastHit hitInfo;
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
+        {
+            Debug.Log("Hit object: " + hitInfo.collider.name);
+        }
+
+        // Debug.Log("FIRST = " + transform.position);
+        // Debug.Log("LAST = " + _direction * 30);
+        Debug.DrawRay(transform.position, _direction * 30, Color.green);
     }
 }
