@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private Animator animator;
     [SerializeField] private Transform model;
-    
+
+    private PlayerFallChecker _playerFallChecker;
 
     private bool _ableToDoubleJump = true;
     
@@ -22,6 +24,11 @@ public class PlayerMovement : MonoBehaviour
     private readonly int _fireballAttackHash = Animator.StringToHash("fireballAttack");
     private readonly int _doubleJumpHash = Animator.StringToHash("doubleJump");
     private readonly int _speedHash = Animator.StringToHash("speed");
+
+    private void Start()
+    {
+        _playerFallChecker = GetComponent<PlayerFallChecker>();
+    }
 
     private void Update()
     {
@@ -71,23 +78,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         controller.Move(_direction * Time.deltaTime);
-        
-        rayDisplay();
-        
-    }
-
-    private void rayDisplay()
-    {
-        Ray ray = new Ray(transform.position, _direction);
-        
-        RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity))
-        {
-            Debug.Log("Hit object: " + hitInfo.collider.name);
-        }
-
-        // Debug.Log("FIRST = " + transform.position);
-        // Debug.Log("LAST = " + _direction * 30);
-        Debug.DrawRay(transform.position, _direction * 30, Color.green);
+        _playerFallChecker.checkPlayerToFall(transform.position, _direction);
     }
 }
