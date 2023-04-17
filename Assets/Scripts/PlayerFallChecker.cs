@@ -30,6 +30,7 @@ public class PlayerFallChecker : MonoBehaviour
         {
             Debug.Log("NO PLATFORM");
             cameraFreezer.Freeze();
+            _leftSecondsToDie = secondsToDie;
         }
 
         Debug.DrawRay(transform.position, direction * 30, Color.green);
