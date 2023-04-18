@@ -20,8 +20,6 @@ public class EnemyMovement : MonoBehaviour
     private readonly int _animationAttackHash = Animator.StringToHash("Attack");
     private readonly int _isAttackHash = Animator.StringToHash("isAttack");
     private readonly int _isChaseHash = Animator.StringToHash("isChase");
-
-        
     
     private void OnEnable()
     {
@@ -97,7 +95,7 @@ public class EnemyMovement : MonoBehaviour
             _directionState = DirectionStateEnum.Left;
             transform.rotation = Quaternion.Euler(0f, -90f, 0f);
         }
-        transform.Translate(Vector3.forward * Time.deltaTime);
+        transform.Translate(Vector3.forward * (speed * Time.deltaTime));
     }
 
     private void Attack()

@@ -1,9 +1,9 @@
-using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    private CharacterController _controller;
     private Vector3 _direction;
 
     [SerializeField] private float speed = 8f;
@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        _controller = GetComponent<CharacterController>();
         _playerFallChecker = GetComponent<PlayerFallChecker>();
     }
 
@@ -77,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             model.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, 0));
         }
 
-        controller.Move(_direction * Time.deltaTime);
-        _playerFallChecker.checkPlayerToFall(transform.position, _direction);
+        _controller.Move(_direction * Time.deltaTime);
+        _playerFallChecker.CheckPlayerToFall(transform.position, _direction);
     }
 }

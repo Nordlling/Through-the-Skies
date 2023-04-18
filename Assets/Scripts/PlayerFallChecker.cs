@@ -14,12 +14,11 @@ public class PlayerFallChecker : MonoBehaviour
         _leftSecondsToDie = secondsToDie;
     }
 
-    public void checkPlayerToFall(Vector3 origin, Vector3 direction)
+    public void CheckPlayerToFall(Vector3 origin, Vector3 direction)
     {
-        Ray ray = new Ray(origin, direction);
-        
         if (direction.y < 0)
         {
+            Ray ray = new Ray(origin, direction);
             _leftSecondsToDie -= Time.deltaTime;
             if (Physics.Raycast(ray, distanceToDie))
             {
