@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public CharacterController controller;
+    private CharacterController _controller;
     private Vector3 _direction;
 
     [SerializeField] private float speed = 8f;
@@ -13,7 +14,8 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private Animator animator;
     [SerializeField] private Transform model;
-    
+
+    private PlayerFallChecker _playerFallChecker;
 
     private bool _ableToDoubleJump = true;
     
@@ -22,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
     private readonly int _fireballAttackHash = Animator.StringToHash("fireballAttack");
     private readonly int _doubleJumpHash = Animator.StringToHash("doubleJump");
     private readonly int _speedHash = Animator.StringToHash("speed");
+
+    private void Start()
+    {
+        _controller = GetComponent<CharacterController>();
+        _playerFallChecker = GetComponent<PlayerFallChecker>();
+    }
 
     private void Update()
     {
@@ -38,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded)
         {
-            _direction.y = -1f;
+            _direction.y = 0f;
             _ableToDoubleJump = true;
             if (Input.GetButtonDown("Fire1"))
             {
@@ -70,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
             model.rotation = Quaternion.LookRotation(new Vector3(horizontalInput, 0, 0));
         }
 
-        controller.Move(_direction * Time.deltaTime);
+        _controller.Move(_direction * Time.deltaTime);
+        _playerFallChecker.CheckPlayerToFall(transform.position, _direction);
     }
 }
