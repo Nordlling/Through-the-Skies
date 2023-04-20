@@ -1,17 +1,20 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class LeverResultDisplay : MonoBehaviour
 {
+    [Inject] private GameOverNotifier _gameOverNotifier;
+    
     [SerializeField] private Animator animator;
     [SerializeField] private float delay = 2f;
     
     private void OnEnable()
     {
-        GameOverNotifier.OnFailDisplay += OnFailDisplay;
+        _gameOverNotifier.OnFailDisplay += OnFailDisplay;
     }
     private void OnDisable()
     {
-        GameOverNotifier.OnFailDisplay -= OnFailDisplay;
+        _gameOverNotifier.OnFailDisplay -= OnFailDisplay;
     }
 
     private void OnFailDisplay()

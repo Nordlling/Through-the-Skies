@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
+using Zenject;
 
 public class CameraFreezer : MonoBehaviour
 {
+    [Inject] private GameOverNotifier _gameOverNotifier;
+    
     [SerializeField] private float secondsToLive = 1f;
     [SerializeField] private Renderer target;
 
@@ -28,7 +31,7 @@ public class CameraFreezer : MonoBehaviour
         if (!GeometryUtility.TestPlanesAABB(planes, target.bounds))
         {
             Debug.Log("Player is GONE");
-            GameOverNotifier.GameOver();
+            _gameOverNotifier.GameOver();
             enabled = false;
         }
 

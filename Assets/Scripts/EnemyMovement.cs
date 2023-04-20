@@ -1,8 +1,11 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 public class EnemyMovement : MonoBehaviour
 {
+    [Inject] private GameOverNotifier _gameOverNotifier;
+    
     [SerializeField] private Animator animatorController;
     [SerializeField] private Transform target;
     [SerializeField] private float distanceToChase = 10f;
@@ -23,11 +26,11 @@ public class EnemyMovement : MonoBehaviour
     
     private void OnEnable()
     {
-        GameOverNotifier.OnGameOver += GameOver;
+        _gameOverNotifier.OnGameOver += GameOver;
     }
     private void OnDisable()
     {
-        GameOverNotifier.OnGameOver -= GameOver;
+        _gameOverNotifier.OnGameOver -= GameOver;
     }
 
 

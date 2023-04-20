@@ -1,5 +1,9 @@
+using Zenject;
+
 public class PlayerHealth : AbstractHealth
 {
+    [Inject] private GameOverNotifier _gameOverNotifier;
+    
     private void OnEnable()
     {
         EnemyCollision.OnTakeDamage += TakeDamage;
@@ -12,6 +16,6 @@ public class PlayerHealth : AbstractHealth
     protected override void Die()
     {
         base.Die();
-        GameOverNotifier.GameOver();
+        _gameOverNotifier.GameOver();
     }
 }
