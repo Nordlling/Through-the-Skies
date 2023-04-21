@@ -3,7 +3,6 @@ using Zenject;
 
 public class GameOverInstaller : MonoInstaller
 {
-
     [SerializeField] private GameOverNotifier gameOverNotifier;
     
     public override void InstallBindings()
@@ -11,4 +10,3 @@ public class GameOverInstaller : MonoInstaller
         Container.Bind<GameOverNotifier>().FromInstance(gameOverNotifier).AsSingle().NonLazy();
     }
 }
-

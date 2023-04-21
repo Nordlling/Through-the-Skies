@@ -2,7 +2,9 @@ using Zenject;
 
 public class PlayerHealth : AbstractHealth
 {
+    
     [Inject] private GameOverNotifier _gameOverNotifier;
+    //todo [Inject] private EnemyCollision _enemyCollision;
     
     private void OnEnable()
     {

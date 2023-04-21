@@ -3,7 +3,6 @@ using Zenject;
 
 public class PlayerInstaller : MonoInstaller
 {
-
     [SerializeField] private PlayerMovement playerMovement;
     
     public override void InstallBindings()
@@ -12,4 +11,3 @@ public class PlayerInstaller : MonoInstaller
         Container.QueueForInject(playerMovement);
     }
 }
-
