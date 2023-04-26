@@ -1,11 +1,10 @@
+using UnityEngine;
+
 public class EnemyHealth : AbstractHealth
 {
-    private void OnEnable()
+    protected override void Die()
     {
-        FireballCollision.OnTakeDamage += TakeDamage;
-    }
-    private void OnDisable()
-    {
-        FireballCollision.OnTakeDamage -= TakeDamage;
+        base.Die();
+        Debug.Log("ENEMY IS DIED");
     }
 }

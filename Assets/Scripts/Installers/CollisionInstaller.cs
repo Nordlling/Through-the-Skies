@@ -3,16 +3,13 @@ using Zenject;
 
 public class CollisionInstaller : MonoInstaller
 {
-    //todo
-    [SerializeField] private EnemyHealth enemyCollision;
+    [SerializeField] private EnemyCollision enemyCollision;
     [SerializeField] private FireballCollision fireballCollision;
     
-    [SerializeField] private Transform enemySpawnPoint;
+    [SerializeField] private Transform fireballSpawnPoint;
     
     public override void InstallBindings()
     {
-        var enemyInstance = Container.InstantiatePrefabForComponent<EnemyHealth>(enemyCollision, enemySpawnPoint.position, Quaternion.identity, null);
-        Container.Bind<EnemyHealth>().FromInstance(enemyInstance).AsSingle();
     }
 }
 

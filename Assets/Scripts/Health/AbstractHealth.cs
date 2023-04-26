@@ -17,13 +17,8 @@ public abstract class AbstractHealth : MonoBehaviour
         Components = GetComponents<MonoBehaviour>();
     }
 
-    protected void TakeDamage(GameObject damagedObject, int damage)
+    public void TakeDamage(int damage)
     {
-        if (damagedObject != gameObject)
-        {
-            return;
-        }
-
         if (damage < 0)
         {
             throw new Exception("Negative damage");

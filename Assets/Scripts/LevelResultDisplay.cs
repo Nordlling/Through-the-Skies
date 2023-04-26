@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Zenject;
 
-public class LeverResultDisplay : MonoBehaviour
+public class LevelResultDisplay : MonoBehaviour
 {
     [Inject] private GameOverNotifier _gameOverNotifier;
     

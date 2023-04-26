@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18154562, g: 0.22718787, b: 0.30740574, a: 1}
+  m_IndirectSpecularColor: {r: 0.18154585, g: 0.2271883, b: 0.30740634, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2641,11 +2641,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97cffbdf1c784758892266d09ab02615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyCollision: {fileID: 3074111120023407368, guid: 54d15ec1209c47949a6c5b5a037b6ab6,
-    type: 3}
+  enemyCollision: {fileID: 0}
   fireballCollision: {fileID: 0}
-  enemySpawnPoint: {fileID: 3074111120023407371, guid: 54d15ec1209c47949a6c5b5a037b6ab6,
-    type: 3}
+  fireballSpawnPoint: {fileID: 0}
 --- !u!1001 &620419311
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3268,7 +3266,7 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 552682766}
   - {fileID: 692883677}
-  - {fileID: 618713413}
+  - {fileID: 1661500722}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -6978,7 +6976,7 @@ PrefabInstance:
     - target: {fileID: 3074111119366134562, guid: 54d15ec1209c47949a6c5b5a037b6ab6,
         type: 3}
       propertyPath: damage
-      value: 35
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3074111120023407367, guid: 54d15ec1209c47949a6c5b5a037b6ab6,
         type: 3}

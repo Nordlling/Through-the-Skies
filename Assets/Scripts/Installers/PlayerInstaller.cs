@@ -9,5 +9,9 @@ public class PlayerInstaller : MonoInstaller
     {
         Container.Bind<PlayerMovement>().FromInstance(playerMovement).AsSingle();
         Container.QueueForInject(playerMovement);
+        
+        PlayerHealth playerHealth = playerMovement.GetComponent<PlayerHealth>();
+        Container.Bind<PlayerHealth>().FromInstance(playerHealth).AsSingle();
+        Container.QueueForInject(playerHealth);
     }
 }

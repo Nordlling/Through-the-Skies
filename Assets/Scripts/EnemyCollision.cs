@@ -1,19 +1,18 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
+using Zenject;
 
 public class EnemyCollision : MonoBehaviour
 {
+    [Inject] private PlayerHealth _playerHealth;
     [SerializeField] private int damage = 40;
     private bool _alreadyDamaged;
-    
-    public static event Action<GameObject, int> OnTakeDamage;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player") && !_alreadyDamaged)
         {
             _alreadyDamaged = true;
-            OnTakeDamage?.Invoke(other.gameObject, damage);
+            _playerHealth.TakeDamage(damage);
         }
     }
     
