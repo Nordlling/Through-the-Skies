@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.047889438, g: 0.039043635, b: 0.022950975, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2031,7 +2031,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 026d83648fe4b9240915e5065d029484, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -2277,36 +2277,6 @@ MonoBehaviour:
   prefab: {fileID: 4902340931570429146, guid: 1d077d61043ef8f409c6812d366fab5e, type: 3}
   point: {fileID: 1894907684}
   speed: 800
---- !u!114 &528979369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528979365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Events:
-    m_Signals:
-    - {fileID: 11400000, guid: a2833429d6af301449b89e43081d3d65, type: 2}
-    m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 528979365}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &543493946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4972,7 +4942,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 26365bddc09d9d547809b333d4dde0ba,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -1.03
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 26365bddc09d9d547809b333d4dde0ba,
         type: 3}
@@ -6934,6 +6904,7 @@ GameObject:
   - component: {fileID: 1982674496}
   - component: {fileID: 1982674499}
   - component: {fileID: 1982674498}
+  - component: {fileID: 1982674500}
   m_Layer: 0
   m_Name: StartGameTimeline
   m_TagString: Untagged
@@ -6952,7 +6923,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: d41ee01503c1b8a49ba451757d1f8667, type: 2}
   m_InitialState: 1
-  m_WrapMode: 0
+  m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -7010,6 +6981,19 @@ MonoBehaviour:
   timeline: {fileID: 1982674496}
   animator: {fileID: 0}
   animationClip: {fileID: 0}
+--- !u!114 &1982674500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982674495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6245fb3842603f24ca077ad7d60afe30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeline: {fileID: 1982674496}
 --- !u!4 &2083403422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5623343781196544247, guid: 13d91337250a8df4882758b731898ab1,
