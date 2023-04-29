@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerFallChecker _playerFallChecker;
 
+    private bool _isGrounded = true;
     private bool _ableToDoubleJump = true;
     
     private readonly int _animationFireballAttackHash = Animator.StringToHash("FireballAttack");
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _controller = GetComponent<CharacterController>();
         _playerFallChecker = GetComponent<PlayerFallChecker>();
+        animator.SetBool(_isGroundedHash, _isGrounded);
     }
 
     private void Update()
@@ -40,11 +42,11 @@ public class PlayerMovement : MonoBehaviour
         
         animator.SetFloat(_speedHash, Mathf.Abs(horizontalInput));
         
-        bool isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+        _isGrounded = Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
         
-        animator.SetBool(_isGroundedHash, isGrounded);
+        animator.SetBool(_isGroundedHash, _isGrounded);
 
-        if (isGrounded)
+        if (_isGrounded)
         {
             _direction.y = 0f;
             _ableToDoubleJump = true;
