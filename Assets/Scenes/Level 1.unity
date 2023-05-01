@@ -3769,9 +3769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd06a4cf221f4124c96b496ef1b8dfcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  jumpForce: 12
-  gravity: -20
+  playerConfig: {fileID: 11400000, guid: b0fdbadad0becd249a23daacd4082dce, type: 2}
   groundCheck: {fileID: 1346674536}
   groundLayer:
     serializedVersion: 2

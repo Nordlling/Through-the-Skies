@@ -6,9 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController _controller;
     private Vector3 _direction;
 
-    [SerializeField] private float speed = 8f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float gravity = -20f;
+    [SerializeField] private PlayerConfig playerConfig;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     
@@ -19,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isGrounded = true;
     private bool _ableToDoubleJump = true;
+
+    private PlayerModel _playerModel;
     
     private readonly int _animationFireballAttackHash = Animator.StringToHash("FireballAttack");
     private readonly int _isGroundedHash = Animator.StringToHash("isGrounded");
@@ -31,14 +31,15 @@ public class PlayerMovement : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _playerFallChecker = GetComponent<PlayerFallChecker>();
         animator.SetBool(_isGroundedHash, _isGrounded);
+        _playerModel = playerConfig.playerModel;
     }
 
     private void Update()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         
-        _direction.x = horizontalInput * speed;
-        _direction.y += gravity * Time.deltaTime;
+        _direction.x = horizontalInput * _playerModel.speed;
+        _direction.y += _playerModel.gravity * Time.deltaTime;
         
         animator.SetFloat(_speedHash, Mathf.Abs(horizontalInput));
         
@@ -56,16 +57,16 @@ public class PlayerMovement : MonoBehaviour
             }
             if (Input.GetButtonDown("Jump"))
             {
-                _direction.y = jumpForce;
+                _direction.y = _playerModel.jumpForce;
             }
         }
         else
         {
-            _direction.y += gravity * Time.deltaTime;
+            _direction.y += _playerModel.gravity * Time.deltaTime;
             if (_ableToDoubleJump && Input.GetButtonDown("Jump"))
             {
                 animator.SetTrigger(_doubleJumpHash);
-                _direction.y = jumpForce;
+                _direction.y = _playerModel.jumpForce;
                 _ableToDoubleJump = false;
             }
         }
