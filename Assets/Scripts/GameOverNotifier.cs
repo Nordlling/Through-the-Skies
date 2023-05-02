@@ -1,24 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class GameOverNotifier : MonoBehaviour
 {
-    public static event Action OnGameOver;
-    public static event Action OnFailDisplay;
+    public event UnityAction OnGameOver;
+    public event UnityAction OnFailDisplay;
 
-    public static void GameOver()
+    public void GameOver()
     {
         NotifyEnemiesGameOver();
         NotifyDisplayGameOver();
     }
     
-    private static void NotifyEnemiesGameOver()
+    private void NotifyEnemiesGameOver()
     {
         OnGameOver?.Invoke();
     }
     
-    private static void NotifyDisplayGameOver()
+    private void NotifyDisplayGameOver()
     {
         OnFailDisplay?.Invoke();
     }
