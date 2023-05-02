@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.Events;
+using Zenject;
 
 public class PlayerFallChecker : MonoBehaviour
 {
 
-    [SerializeField] private CameraFreezer cameraFreezer;
+    [Inject] private CameraFreezer _cameraFreezer;
+    
     [SerializeField] private float secondsToDie = 1f;
     [SerializeField] private float distanceToDie = Mathf.Infinity;
     private float _leftSecondsToDie;
@@ -28,7 +30,7 @@ public class PlayerFallChecker : MonoBehaviour
         if (_leftSecondsToDie < 0f)
         {
             Debug.Log("NO PLATFORM");
-            cameraFreezer.Freeze();
+            _cameraFreezer.Freeze();
             _leftSecondsToDie = secondsToDie;
         }
 
