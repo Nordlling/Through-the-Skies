@@ -10,6 +10,10 @@ public class CollisionInstaller : MonoInstaller
     
     public override void InstallBindings()
     {
+        // Container
+        //     .Bind<IEnemyFactory>()
+        //     .To<EnemyFactory>()
+        //     .AsSingle();
     }
 }
 
